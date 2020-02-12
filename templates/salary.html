@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="../static/assets/images/favicon.ico"
+      type="image/x-icon">
+    <link rel="icon" href="../static/asset/images/favicon.ico"
+      type="image/x-icon">
+    <title>MLB | Salary Predictions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body style="margin-bottom:100px">
+
+    <!-- Header nav bar -->
+    <nav class="navbar navbar-expand-lg">
+      <a href="/"><img src="../static/assets/images/mlb_logo_svg.svg"
+          alt="mlb_logo" style="width:71.19px;height:40px"></a>
+      <button class="navbar-toggler header_nav" type="button"
+        data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon header_nav"></span>
+      </button>
+      <div class="navbar collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/statistics">STATISTICS</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/salary">SALARY</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/batter">BATTER</a>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/pitcher">PITCHER</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mlabout">ML ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">...</a>
+          </li>
+        </ul>
+        <div>
+          <a href="https://github.com/nickkeller21/MLB_WAR_viz" target="_blank"><img
+              src="../static/assets/images/guthub_white.png" alt="Git-Hub"
+              style="width:90.19px;height:40px"></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Title Nav  -->
+    <div class="title_header">
+      <h1>MLB Machine Learning</h1>
+      <h6>
+        Our Salary projection algorithim identifies MLB players current season statistics and forecast an aproximate next season contract might look like.</h6>
+        <p class="see-also"><b> More MLB:</b><a href="#"> Our 2019-20 MLB
+            predictions - </a><a href="#">Every team’s Elo history.</a></p>
+        <p id="date"></p>
+    </div>
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+          <div class="col-sm-12" style="border-color: black">
+            <h2 text-align="center">Stats Viewer</h2>
+            <h6>From the following dropdown select a player of your choice.</h6>
+          </br>
+          <div>
+            <div>
+              <select id="myInput" onchange="optionChangedSalary(this.value)"
+                Style="border-radius: 10px"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:30px">
+      <div class="row">
+        <div class="col-sm-3">
+          <h2 id = "player_name">Player</h2>
+          <div border-radius="25%">
+            <img src="" border-radius="25%" width="225" height="300" id="player_pic">
+          </div>
+          <br>
+          <div>
+            <h5>Bio</h5>
+            <p id="player_bio">This is where the bio will be!!</p>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <h2>How much will this player make?</h2>
+          <h6>The following information displays the actual and predicted salary
+            for the chosen MLB player.</h6>
+          <div">
+            <div class="row">
+              <div class="col-md-6"><h2>Current Salary</h2></div>
+              <div class="col-md-6"><h2>Predicted Salary</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 div_predicted" id ="current">$400,000</div>
+              <div class="col-md-5 offset-md-1 div_predicted" id="predicted">$1,000,000</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"><h2>Amount +/-</h2></div>
+              <div class="col-md-6"><h2>Percent Difference</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 div_predicted" id="difference">$600,000</div>
+              <div class="col-md-5 offset-md-1 div_predicted" id="percent">150%</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm"><h2 style="text-align: center;">Salary</h2>
+            </div>
+        </div> 
+        <div class="row">
+            <div id="salary_table" style="width:100%"></div>
+          </div>
+        <div class="row"><img
+              src="/static/assets/images/salary_predictions.png" width="1080px"
+              height="350px">
+        </div>
+        
+      <!--container close-->
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app2.js') }}"></script>
+    <script type="text/javascript" src="../static/js/app2.js"></script>
+  </body>
+  <footer>
+    <div class="footer" style="margin-top:160px">
+      <p>Made with ❤ by 4 Astros' Fans @ 2019</p>
+    </div>
+  </footer>
+</html>

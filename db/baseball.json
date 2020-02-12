@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5d9d3f8ee9594508789d79b5"},"name":"Max Scherzer","height":"6' 2\"","years":{"2018":{"WAR":{"$numberDouble":"3.9"},"K/9":{"$numberDouble":"5.6"},"ERA":{"$numberDouble":"3.12"}},"2019":{"WAR":{"$numberDouble":"2.543"},"K/9":{"$numberDouble":"10.4"},"ERA":{"$numberDouble":"2.92"}}}}
+{"_id":{"$oid":"5d9fce06b2d5d31d981924b2"},"name":"Gerrit Cole","height":"6' 4\"","years":{"2018":{"WAR":{"$numberInt":"24"},"K/9":{"$numberInt":"43"},"ERA":{"$numberInt":"1"}},"2019":{"WAR":{"$numberDouble":"5.8"},"K/9":{"$numberDouble":"12.7"},"ERA":{"$numberDouble":"2.92"}}}}

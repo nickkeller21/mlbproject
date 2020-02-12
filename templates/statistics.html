@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="../static/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../static/asset/images/favicon.ico" type="image/x-icon">
+    <title>MLB | Statistics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDBootstrap Datatables  -->
+    <link href="../static/css/datatables.min.css" rel="stylesheet">
+  </head>
+  <body style="margin-bottom:100px">
+
+    <!-- Header nav bar -->
+    <nav class="navbar navbar-expand-lg">
+      <a href="/"><img src="../static/assets/images/mlb_logo_svg.svg"
+          alt="mlb_logo" style="width:71.19px;height:40px"></a>
+      <button class="navbar-toggler header_nav" type="button"
+        data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon header_nav"></span>
+      </button>
+      <div class="navbar collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/statistics">STATISTICS</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/salary">SALARY</a>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/batter">BATTER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pitcher">PITCHER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mlabout">ML ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">...</a>
+            </li>
+          </ul>
+        <div>
+          <a href="https://github.com/nickkeller21/MLB_WAR_viz" target="_blank"><img
+              src="../static/assets/images/guthub_white.png" alt="Git-Hub"
+              style="width:90.19px;height:40px"></a>
+        </div>
+      </div>
+    </nav>
+
+
+<!-- Title Nav  -->
+<div class="title_header">
+  <h1>MLB Raw Data Analytics</h1> 
+  <h6>
+    Our projection system identifies similar players throughout MLB history and uses them to develop a probabilistic<br/>
+    forecast of what a current MLB player’s future might look like.</h6>
+  <p class="see-also"><b> More MLB:</b><a href="#"> Our 2019-20 MLB predictions - </a><a href="#">Every team’s Elo history.</a></p>
+   <p id="date"></p>
+  </div>
+  <div class="container" id="Top_players">
+    <h2>Stats for Players with the highest WAR</h2>
+    <p>Type something in the input field to search the table for first names, last names or anything you see on the table:</p>  
+    <br>
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+      <div>
+          <thead><tr class="header"><th title="Field #2" class="th-sm">Player</th>
+              <th title="Field #3" class="th-sm">WAR</th>
+              <th title="Field #4" class="th-sm">OFF</th>
+              <th title="Field #5" class="th-sm">DEF</th>
+              <th title="Field #6" class="th-sm">WAA</th>
+              <th title="Field #7" class="th-sm">TRPG</th>
+              <th title="Field #8" class="th-sm">ORPG</th>
+              <th title="Field #9" class="th-sm">RAA</th>
+              <th title="Field #10" class="th-sm">WAAWP</th>
+              <th title="Field #11" class="th-sm">Season</th>
+              <th title="Field #12" class="th-sm">First Name</th>
+              <th title="Field #13" class="th-sm">Last Name</th>
+              </tr>
+            </thead>
+              <tbody>
+              <tr>
+              <td>Cody Bellinger</td>
+              <td text-align="left">9</td>
+              <td text-align="right">6.6</td>
+              <td text-align="right">1.9</td>
+              <td text-align="right">7</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">72.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Cody</td>
+              <td>Bellinger</td>
+              </tr>
+              <tr>
+              <td>Alex Bregman</td>
+              <td text-align="right">8.4</td>
+              <td text-align="right">7.7</td>
+              <td text-align="right">1.2</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">5</td>
+              <td text-align="right">62</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Alex</td>
+              <td>Bregman</td>
+              </tr>
+              <tr>
+              <td>Mike Trout</td>
+              <td text-align="right">8.3</td>
+              <td text-align="right">8.3</td>
+              <td text-align="right">0.3</td>
+              <td text-align="right">6.3</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">5</td>
+              <td text-align="right">65.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Mike</td>
+              <td>Trout</td>
+              </tr>
+              <tr>
+              <td>Marcus Semien</td>
+              <td text-align="right">8.1</td>
+              <td text-align="right">7.5</td>
+              <td text-align="right">1.5</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">5</td>
+              <td text-align="right">58.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Marcus</td>
+              <td>Semien</td>
+              </tr>
+              <tr>
+              <td>Justin Verlander</td>
+              <td text-align="right">7.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">56.6</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Justin</td>
+              <td>Verlander</td>
+              </tr>
+              <tr>
+              <td>Mike Minor</td>
+              <td text-align="right">7.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">57</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Mike</td>
+              <td>Minor</td>
+              </tr>
+              <tr>
+              <td>Lance Lynn</td>
+              <td text-align="right">7.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">55.6</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Lance</td>
+              <td>Lynn</td>
+              </tr>
+              <tr>
+              <td>Jacob deGrom</td>
+              <td text-align="right">7.3</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">50.2</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Jacob</td>
+              <td>deGrom</td>
+              </tr>
+              <tr>
+              <td>Christian Yelich</td>
+              <td text-align="right">7.1</td>
+              <td text-align="right">7.3</td>
+              <td text-align="right">-0.7</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">57.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Christian</td>
+              <td>Yelich</td>
+              </tr>
+              <tr>
+              <td>Ketel Marte</td>
+              <td text-align="right">6.9</td>
+              <td text-align="right">6.6</td>
+              <td text-align="right">0.9</td>
+              <td text-align="right">5</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">53.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Ketel</td>
+              <td>Marte</td>
+              </tr>
+              <tr>
+              <td>Gerrit Cole</td>
+              <td text-align="right">6.9</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">49.2</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Gerrit</td>
+              <td>Cole</td>
+              </tr>
+              <tr>
+              <td>Mookie Betts</td>
+              <td text-align="right">6.8</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">1.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">45.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Mookie</td>
+              <td>Betts</td>
+              </tr>
+              <tr>
+              <td>Matt Chapman</td>
+              <td text-align="right">6.7</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">2.3</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">43.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Matt</td>
+              <td>Chapman</td>
+              </tr>
+              <tr>
+              <td>Trevor Story</td>
+              <td text-align="right">6.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">48</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Trevor</td>
+              <td>Story</td>
+              </tr>
+              <tr>
+              <td>Anthony Rendon</td>
+              <td text-align="right">6.3</td>
+              <td text-align="right">6.4</td>
+              <td text-align="right">0.3</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">47.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Anthony</td>
+              <td>Rendon</td>
+              </tr>
+              <tr>
+              <td>Stephen Strasburg</td>
+              <td text-align="right">6.3</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">41.4</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Stephen</td>
+              <td>Strasburg</td>
+              </tr>
+              <tr>
+              <td>George Springer</td>
+              <td text-align="right">6.2</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">1</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">44.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>George</td>
+              <td>Springer</td>
+              </tr>
+              <tr>
+              <td>Josh Donaldson</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">1.7</td>
+              <td text-align="right">4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">43</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Josh</td>
+              <td>Donaldson</td>
+              </tr>
+              <tr>
+              <td>DJ LeMahieu</td>
+              <td text-align="right">6</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">0.9</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">38.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>DJ</td>
+              <td>LeMahieu</td>
+              </tr>
+              <tr>
+              <td>Eduardo Rodriguez</td>
+              <td text-align="right">6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">41.5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Eduardo</td>
+              <td>Rodriguez</td>
+              </tr>
+              <tr>
+              <td>Jack Flaherty</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">38.6</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Jack</td>
+              <td>Flaherty</td>
+              </tr>
+              <tr>
+              <td>Max Scherzer</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">39.2</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">19</td>
+              <td>Max</td>
+              <td>Scherzer</td>
+              </tr>
+              <tr>
+              <td>Nolan Arenado</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">5</td>
+              <td text-align="right">1.1</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">39.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Nolan</td>
+              <td>Arenado</td>
+              </tr>
+              <tr>
+              <td>Max Muncy</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">1.1</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">41.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Max</td>
+              <td>Muncy</td>
+              </tr>
+              <tr>
+              <td>Jorge Polanco</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">1</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">33.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Jorge</td>
+              <td>Polanco</td>
+              </tr>
+              <tr>
+              <td>Mike Soroka</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">38.2</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Mike</td>
+              <td>Soroka</td>
+              </tr>
+              <tr>
+              <td>Patrick Corbin</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">36.4</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Patrick</td>
+              <td>Corbin</td>
+              </tr>
+              <tr>
+              <td>Lucas Giolito</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4</td>
+              <td text-align="right">5</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">39.8</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Lucas</td>
+              <td>Giolito</td>
+              </tr>
+              <tr>
+              <td>Sonny Gray</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">37.5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Sonny</td>
+              <td>Gray</td>
+              </tr>
+              <tr>
+              <td>Zack Greinke</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">9.7</td>
+              <td text-align="right">7.7</td>
+              <td text-align="right">35.6</td>
+              <td text-align="right">1.2</td>
+              <td text-align="right">19</td>
+              <td>Zack</td>
+              <td>Greinke</td>
+              </tr>
+              <tr>
+              <td>Ronald Acuna Jr.</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">37.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Ronald</td>
+              <td>Acuna Jr.</td>
+              </tr>
+              <tr>
+              <td>Aaron Judge</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">1.6</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">38.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Aaron</td>
+              <td>Judge</td>
+              </tr>
+              <tr>
+              <td>Rafael Devers</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">-0.1</td>
+              <td text-align="right">3</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">29.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Rafael</td>
+              <td>Devers</td>
+              </tr>
+              <tr>
+              <td>Xander Bogaerts</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">7.1</td>
+              <td text-align="right">-1</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">5</td>
+              <td text-align="right">28.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Xander</td>
+              <td>Bogaerts</td>
+              </tr>
+              <tr>
+              <td>Hyun-Jin Ryu</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">32.5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Hyun-Jin</td>
+              <td>Ryu</td>
+              </tr>
+              <tr>
+              <td>Matt Olson</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">0.9</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">31.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Matt</td>
+              <td>Olson</td>
+              </tr>
+              <tr>
+              <td>Charlie Morton</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4</td>
+              <td text-align="right">33.8</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Charlie</td>
+              <td>Morton</td>
+              </tr>
+              <tr>
+              <td>Pete Alonso</td>
+              <td text-align="right">5</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">-1.6</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">32.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Pete</td>
+              <td>Alonso</td>
+              </tr>
+              <tr>
+              <td>Jeff McNeil</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">0.1</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">34.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Jeff</td>
+              <td>McNeil</td>
+              </tr>
+              <tr>
+              <td>Shane Bieber</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">31.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Shane</td>
+              <td>Bieber</td>
+              </tr>
+              <tr>
+              <td>Javier Baez</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">2.2</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">32.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Javier</td>
+              <td>Baez</td>
+              </tr>
+              <tr>
+              <td>Ozzie Albies</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">1</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">29.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Ozzie</td>
+              <td>Albies</td>
+              </tr>
+              <tr>
+              <td>Francisco Lindor</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">1.7</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">25.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Francisco</td>
+              <td>Lindor</td>
+              </tr>
+              <tr>
+              <td>Luis Castillo</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">28.9</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">19</td>
+              <td>Luis</td>
+              <td>Castillo</td>
+              </tr>
+              <tr>
+              <td>Kolten Wong</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">1.7</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">31.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Kolten</td>
+              <td>Wong</td>
+              </tr>
+              <tr>
+              <td>Juan Soto</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">-0.6</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">29.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Juan</td>
+              <td>Soto</td>
+              </tr>
+              <tr>
+              <td>Yoan Moncada</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">-0.3</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">26.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Yoan</td>
+              <td>Moncada</td>
+              </tr>
+              <tr>
+              <td>Michael Brantley</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">22.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Michael</td>
+              <td>Brantley</td>
+              </tr>
+              <tr>
+              <td>Nick Ahmed</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">2.5</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">27.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Nick</td>
+              <td>Ahmed</td>
+              </tr>
+              <tr>
+              <td>Carlos Santana</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">-0.8</td>
+              <td text-align="right">2.2</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">20.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">19</td>
+              <td>Carlos</td>
+              <td>Santana</td>
+              </tr>
+              <tr>
+              <td>Aaron Nola</td>
+              <td text-align="right">10.5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">8.8</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">2.1</td>
+              <td text-align="right">71.5</td>
+              <td text-align="right">0.8</td>
+              <td text-align="right">18</td>
+              <td>Aaron</td>
+              <td>Nola</td>
+              </tr>
+              <tr>
+              <td>Kyle Freeland</td>
+              <td text-align="right">8.4</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">6.8</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">56.5</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">18</td>
+              <td>Kyle</td>
+              <td>Freeland</td>
+              </tr>
+              <tr>
+              <td>Jose Ramirez</td>
+              <td text-align="right">7.9</td>
+              <td text-align="right">7.4</td>
+              <td text-align="right">0.8</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">53.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Jose</td>
+              <td>Ramirez</td>
+              </tr>
+              <tr>
+              <td>Blake Snell</td>
+              <td text-align="right">7.5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">52</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">18</td>
+              <td>Blake</td>
+              <td>Snell</td>
+              </tr>
+              <tr>
+              <td>Lorenzo Cain</td>
+              <td text-align="right">6.9</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">49.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Lorenzo</td>
+              <td>Cain</td>
+              </tr>
+              <tr>
+              <td>Chris Sale</td>
+              <td text-align="right">6.9</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">48.4</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">18</td>
+              <td>Chris</td>
+              <td>Sale</td>
+              </tr>
+              <tr>
+              <td>J.D. Martinez</td>
+              <td text-align="right">6.4</td>
+              <td text-align="right">6.8</td>
+              <td text-align="right">-1.4</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">39.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>J.D.</td>
+              <td>Martinez</td>
+              </tr>
+              <tr>
+              <td>Andrelton Simmons</td>
+              <td text-align="right">6.2</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">37.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Andrelton</td>
+              <td>Simmons</td>
+              </tr>
+              <tr>
+              <td>Mitch Haniger</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">35.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Mitch</td>
+              <td>Haniger</td>
+              </tr>
+              <tr>
+              <td>Freddie Freeman</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">39.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Freddie</td>
+              <td>Freeman</td>
+              </tr>
+              <tr>
+              <td>Corey Kluber</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">36.8</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>Corey</td>
+              <td>Kluber</td>
+              </tr>
+              <tr>
+              <td>Trevor Bauer</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">38.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>Trevor</td>
+              <td>Bauer</td>
+              </tr>
+              <tr>
+              <td>Manny Machado</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">6.7</td>
+              <td text-align="right">-0</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">9.4</td>
+              <td text-align="right">8.9</td>
+              <td text-align="right">33</td>
+              <td text-align="right">1</td>
+              <td text-align="right">18</td>
+              <td>Manny</td>
+              <td>Machado</td>
+              </tr>
+              <tr>
+              <td>Whit Merrifield</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">1.4</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">29.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Whit</td>
+              <td>Merrifield</td>
+              </tr>
+              <tr>
+              <td>Paul Goldschmidt</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">-0.4</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">33.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Paul</td>
+              <td>Goldschmidt</td>
+              </tr>
+              <tr>
+              <td>Mike Clevinger</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">32.2</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>Mike</td>
+              <td>Clevinger</td>
+              </tr>
+              <tr>
+              <td>Jose Altuve</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">29.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Jose</td>
+              <td>Altuve</td>
+              </tr>
+              <tr>
+              <td>Matt Carpenter</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">-0.1</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">29.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Matt</td>
+              <td>Carpenter</td>
+              </tr>
+              <tr>
+              <td>Jed Lowrie</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">2.5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">22.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Jed</td>
+              <td>Lowrie</td>
+              </tr>
+              <tr>
+              <td>Luis Severino</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">29.2</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>Luis</td>
+              <td>Severino</td>
+              </tr>
+              <tr>
+              <td>Aaron Hicks</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">24.6</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Aaron</td>
+              <td>Hicks</td>
+              </tr>
+              <tr>
+              <td>Jameson Taillon</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">27.5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>Jameson</td>
+              <td>Taillon</td>
+              </tr>
+              <tr>
+              <td>German Marquez</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">27</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>German</td>
+              <td>Marquez</td>
+              </tr>
+              <tr>
+              <td>Justin Turner</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">31.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Justin</td>
+              <td>Turner</td>
+              </tr>
+              <tr>
+              <td>David Price</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">26.9</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">18</td>
+              <td>David</td>
+              <td>Price</td>
+              </tr>
+              <tr>
+              <td>Brandon Nimmo</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">-1</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">27.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Brandon</td>
+              <td>Nimmo</td>
+              </tr>
+              <tr>
+              <td>Jean Segura</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">1.5</td>
+              <td text-align="right">2.3</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">19.6</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Jean</td>
+              <td>Segura</td>
+              </tr>
+              <tr>
+              <td>Joey Wendle</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">1</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">21.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Joey</td>
+              <td>Wendle</td>
+              </tr>
+              <tr>
+              <td>J.T. Realmuto</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.1</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">26.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>J.T.</td>
+              <td>Realmuto</td>
+              </tr>
+              <tr>
+              <td>Blake Treinen</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">23.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Blake</td>
+              <td>Treinen</td>
+              </tr>
+              <tr>
+              <td>Didi Gregorius</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">2.3</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">20.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">18</td>
+              <td>Didi</td>
+              <td>Gregorius</td>
+              </tr>
+              <tr>
+              <td>Giancarlo Stanton</td>
+              <td text-align="right">7.6</td>
+              <td text-align="right">6.5</td>
+              <td text-align="right">0.4</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">56.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Giancarlo</td>
+              <td>Stanton</td>
+              </tr>
+              <tr>
+              <td>Joey Votto</td>
+              <td text-align="right">7.5</td>
+              <td text-align="right">6.4</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">54.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Joey</td>
+              <td>Votto</td>
+              </tr>
+              <tr>
+              <td>Gio Gonzalez</td>
+              <td text-align="right">6.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">45.6</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">17</td>
+              <td>Gio</td>
+              <td>Gonzalez</td>
+              </tr>
+              <tr>
+              <td>Tommy Pham</td>
+              <td text-align="right">6.4</td>
+              <td text-align="right">5</td>
+              <td text-align="right">1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">47.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Tommy</td>
+              <td>Pham</td>
+              </tr>
+              <tr>
+              <td>Carlos Correa</td>
+              <td text-align="right">6.3</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">47</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Carlos</td>
+              <td>Correa</td>
+              </tr>
+              <tr>
+              <td>Kris Bryant</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">0.4</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">43.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Kris</td>
+              <td>Bryant</td>
+              </tr>
+              <tr>
+              <td>Charlie Blackmon</td>
+              <td text-align="right">6</td>
+              <td text-align="right">6.5</td>
+              <td text-align="right">-0.2</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">40.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Charlie</td>
+              <td>Blackmon</td>
+              </tr>
+              <tr>
+              <td>Marcus Stroman</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">4</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">38.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Marcus</td>
+              <td>Stroman</td>
+              </tr>
+              <tr>
+              <td>Marcell Ozuna</td>
+              <td text-align="right">5.8</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">0.4</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">38</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Marcell</td>
+              <td>Ozuna</td>
+              </tr>
+              <tr>
+              <td>Justin Upton</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.3</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">9.8</td>
+              <td text-align="right">9.4</td>
+              <td text-align="right">33.8</td>
+              <td text-align="right">1</td>
+              <td text-align="right">17</td>
+              <td>Justin</td>
+              <td>Upton</td>
+              </tr>
+              <tr>
+              <td>Corey Seager</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">1.7</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">37.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Corey</td>
+              <td>Seager</td>
+              </tr>
+              <tr>
+              <td>Carlos Carrasco</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">35.2</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Carlos</td>
+              <td>Carrasco</td>
+              </tr>
+              <tr>
+              <td>Byron Buxton</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">32.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Byron</td>
+              <td>Buxton</td>
+              </tr>
+              <tr>
+              <td>Jonathan Schoop</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">27.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Jonathan</td>
+              <td>Schoop</td>
+              </tr>
+              <tr>
+              <td>Kevin Kiermaier</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">2.5</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">35.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Kevin</td>
+              <td>Kiermaier</td>
+              </tr>
+              <tr>
+              <td>Robbie Ray</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">34.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Robbie</td>
+              <td>Ray</td>
+              </tr>
+              <tr>
+              <td>Zack Cozart</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">0.8</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">34.6</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Zack</td>
+              <td>Cozart</td>
+              </tr>
+              <tr>
+              <td>Brett Gardner</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">1.6</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">25.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Brett</td>
+              <td>Gardner</td>
+              </tr>
+              <tr>
+              <td>Chris Taylor</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">30.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Chris</td>
+              <td>Taylor</td>
+              </tr>
+              <tr>
+              <td>Jose Abreu</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">-0.9</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">23.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Jose</td>
+              <td>Abreu</td>
+              </tr>
+              <tr>
+              <td>Elvis Andrus</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">1.2</td>
+              <td text-align="right">2.4</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">23</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Elvis</td>
+              <td>Andrus</td>
+              </tr>
+              <tr>
+              <td>Bryce Harper</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">-0</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">33.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Bryce</td>
+              <td>Harper</td>
+              </tr>
+              <tr>
+              <td>Clayton Kershaw</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">30</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Clayton</td>
+              <td>Kershaw</td>
+              </tr>
+              <tr>
+              <td>Ervin Santana</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">27.2</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Ervin</td>
+              <td>Santana</td>
+              </tr>
+              <tr>
+              <td>Andrew Cashner</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">29.9</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">17</td>
+              <td>Andrew</td>
+              <td>Cashner</td>
+              </tr>
+              <tr>
+              <td>Avisail Garcia</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">-0.4</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">25.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Avisail</td>
+              <td>Garcia</td>
+              </tr>
+              <tr>
+              <td>Brian Dozier</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0.1</td>
+              <td text-align="right">2.2</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">21.6</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">17</td>
+              <td>Brian</td>
+              <td>Dozier</td>
+              </tr>
+              <tr>
+              <td>Robinson Cano</td>
+              <td text-align="right">7.3</td>
+              <td text-align="right">6.2</td>
+              <td text-align="right">1.6</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">46.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Robinson</td>
+              <td>Cano</td>
+              </tr>
+              <tr>
+              <td>Kyle Seager</td>
+              <td text-align="right">6.9</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">2</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">42.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Kyle</td>
+              <td>Seager</td>
+              </tr>
+              <tr>
+              <td>Adrian Beltre</td>
+              <td text-align="right">6.5</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">1.8</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">39.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Adrian</td>
+              <td>Beltre</td>
+              </tr>
+              <tr>
+              <td>Adam Eaton</td>
+              <td text-align="right">6.2</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">1.8</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">36.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Adam</td>
+              <td>Eaton</td>
+              </tr>
+              <tr>
+              <td>Ian Kinsler</td>
+              <td text-align="right">6.1</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">1.7</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">35.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Ian</td>
+              <td>Kinsler</td>
+              </tr>
+              <tr>
+              <td>Anthony Rizzo</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">0.2</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">37.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Anthony</td>
+              <td>Rizzo</td>
+              </tr>
+              <tr>
+              <td>Dustin Pedroia</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">1.8</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">31</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Dustin</td>
+              <td>Pedroia</td>
+              </tr>
+              <tr>
+              <td>Johnny Cueto</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">32.8</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Johnny</td>
+              <td>Cueto</td>
+              </tr>
+              <tr>
+              <td>Tanner Roark</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">33.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Tanner</td>
+              <td>Roark</td>
+              </tr>
+              <tr>
+              <td>Masahiro Tanaka</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">34.5</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Masahiro</td>
+              <td>Tanaka</td>
+              </tr>
+              <tr>
+              <td>Carlos Martinez</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">33.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Carlos</td>
+              <td>Martinez</td>
+              </tr>
+              <tr>
+              <td>Jackie Bradley Jr.</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">1.6</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">28.6</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Jackie</td>
+              <td>Bradley Jr.</td>
+              </tr>
+              <tr>
+              <td>Jon Lester</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">31.9</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Jon</td>
+              <td>Lester</td>
+              </tr>
+              <tr>
+              <td>Noah Syndergaard</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">32.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Noah</td>
+              <td>Syndergaard</td>
+              </tr>
+              <tr>
+              <td>Jose Quintana</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">31.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Jose</td>
+              <td>Quintana</td>
+              </tr>
+              <tr>
+              <td>David Ortiz</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5</td>
+              <td text-align="right">-1.2</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">26.7</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>David</td>
+              <td>Ortiz</td>
+              </tr>
+              <tr>
+              <td>Rick Porcello</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">29.9</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Rick</td>
+              <td>Porcello</td>
+              </tr>
+              <tr>
+              <td>Madison Bumgarner</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.7</td>
+              <td text-align="right">27.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Madison</td>
+              <td>Bumgarner</td>
+              </tr>
+              <tr>
+              <td>Kyle Hendricks</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">30.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Kyle</td>
+              <td>Hendricks</td>
+              </tr>
+              <tr>
+              <td>Cole Hamels</td>
+              <td text-align="right">5</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">30.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Cole</td>
+              <td>Hamels</td>
+              </tr>
+              <tr>
+              <td>Starling Marte</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">3.1</td>
+              <td text-align="right">1.3</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">32.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Starling</td>
+              <td>Marte</td>
+              </tr>
+              <tr>
+              <td>Miguel Cabrera</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">5.5</td>
+              <td text-align="right">-1.5</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">23.3</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Miguel</td>
+              <td>Cabrera</td>
+              </tr>
+              <tr>
+              <td>Michael Fulmer</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">32.1</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Michael</td>
+              <td>Fulmer</td>
+              </tr>
+              <tr>
+              <td>Julio Teheran</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">28.3</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Julio</td>
+              <td>Teheran</td>
+              </tr>
+              <tr>
+              <td>Aaron Sanchez</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">3.6</td>
+              <td text-align="right">29.3</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">16</td>
+              <td>Aaron</td>
+              <td>Sanchez</td>
+              </tr>
+              <tr>
+              <td>Buster Posey</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">3.3</td>
+              <td text-align="right">2</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">27.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">16</td>
+              <td>Buster</td>
+              <td>Posey</td>
+              </tr>
+              <tr>
+              <td>Jake Arrieta</td>
+              <td text-align="right">8.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">6.7</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">54.1</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">15</td>
+              <td>Jake</td>
+              <td>Arrieta</td>
+              </tr>
+              <tr>
+              <td>A.J. Pollock</td>
+              <td text-align="right">7.4</td>
+              <td text-align="right">5.9</td>
+              <td text-align="right">1.8</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">51.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>A.J.</td>
+              <td>Pollock</td>
+              </tr>
+              <tr>
+              <td>Dallas Keuchel</td>
+              <td text-align="right">7.2</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">3</td>
+              <td text-align="right">45.6</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">15</td>
+              <td>Dallas</td>
+              <td>Keuchel</td>
+              </tr>
+              <tr>
+              <td>Jason Heyward</td>
+              <td text-align="right">6.5</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">2</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">43.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Jason</td>
+              <td>Heyward</td>
+              </tr>
+              <tr>
+              <td>Yoenis Cespedes</td>
+              <td text-align="right">6.3</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">0.7</td>
+              <td text-align="right">4.1</td>
+              <td text-align="right">8.9</td>
+              <td text-align="right">8.5</td>
+              <td text-align="right">37.7</td>
+              <td text-align="right">1.1</td>
+              <td text-align="right">15</td>
+              <td>Yoenis</td>
+              <td>Cespedes</td>
+              </tr>
+              <tr>
+              <td>Brandon Crawford</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">3.4</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">36.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Brandon</td>
+              <td>Crawford</td>
+              </tr>
+              <tr>
+              <td>John Lackey</td>
+              <td text-align="right">5.6</td>
+              <td text-align="right">0</td>
+              <td text-align="right">0</td>
+              <td text-align="right">3.8</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">3.2</td>
+              <td text-align="right">31.7</td>
+              <td text-align="right">0.6</td>
+              <td text-align="right">15</td>
+              <td>John</td>
+              <td>Lackey</td>
+              </tr>
+              <tr>
+              <td>Ender Inciarte</td>
+              <td text-align="right">5.3</td>
+              <td text-align="right">2</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">32.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Ender</td>
+              <td>Inciarte</td>
+              </tr>
+              <tr>
+              <td>Chris Davis</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">-0.9</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">25.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Chris</td>
+              <td>Davis</td>
+              </tr>
+              <tr>
+              <td>Nelson Cruz</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">6</td>
+              <td text-align="right">-1.8</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">26.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Nelson</td>
+              <td>Cruz</td>
+              </tr>
+              <tr>
+              <td>Kevin Pillar</td>
+              <td text-align="right">5.2</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">25.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Kevin</td>
+              <td>Pillar</td>
+              </tr>
+              <tr>
+              <td>Logan Forsythe</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">0.9</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">26.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Logan</td>
+              <td>Forsythe</td>
+              </tr>
+              <tr>
+              <td>Curtis Granderson</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">29.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Curtis</td>
+              <td>Granderson</td>
+              </tr>
+              <tr>
+              <td>Jose Bautista</td>
+              <td text-align="right">5.1</td>
+              <td text-align="right">5.4</td>
+              <td text-align="right">-1.1</td>
+              <td text-align="right">2.8</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">25.1</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Jose</td>
+              <td>Bautista</td>
+              </tr>
+              <tr>
+              <td>Matt Duffy</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">3.9</td>
+              <td text-align="right">1.2</td>
+              <td text-align="right">2.9</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">28.5</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Matt</td>
+              <td>Duffy</td>
+              </tr>
+              <tr>
+              <td>Dee Gordon</td>
+              <td text-align="right">4.9</td>
+              <td text-align="right">3.5</td>
+              <td text-align="right">1.8</td>
+              <td text-align="right">3</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">28.8</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Dee</td>
+              <td>Gordon</td>
+              </tr>
+              <tr>
+              <td>Andrew McCutchen</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">5.7</td>
+              <td text-align="right">-0.6</td>
+              <td text-align="right">2.7</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.2</td>
+              <td text-align="right">27.2</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Andrew</td>
+              <td>McCutchen</td>
+              </tr>
+              <tr>
+              <td>Edwin Encarnacion</td>
+              <td text-align="right">4.7</td>
+              <td text-align="right">4.8</td>
+              <td text-align="right">-1.2</td>
+              <td text-align="right">2.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">22.9</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Edwin</td>
+              <td>Encarnacion</td>
+              </tr>
+              <tr>
+              <td>Jason Kipnis</td>
+              <td text-align="right">4.6</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">0.4</td>
+              <td text-align="right">2.5</td>
+              <td text-align="right">4.5</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">22.4</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Jason</td>
+              <td>Kipnis</td>
+              </tr>
+              <tr>
+              <td>Mike Moustakas</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4</td>
+              <td text-align="right">0.8</td>
+              <td text-align="right">2.3</td>
+              <td text-align="right">4.4</td>
+              <td text-align="right">4.3</td>
+              <td text-align="right">20</td>
+              <td text-align="right">0.5</td>
+              <td text-align="right">15</td>
+              <td>Mike</td>
+              <td>Moustakas</td>
+              </tr>
+              </tbody></table>    
+              <div>
+  
+              </div>
+  </div>
+     <script type="text/javascript" src = "../static/js/table_call.js"></script>
+     <!-- MDBootstrap Datatables  -->
+     <script type="text/javascript" src="../static/js/datatables.min.js"></script>
+<footer>
+  <div class="footer" style="margin-top:60px">
+    <p>Made with ❤ by 4 Astros' Fans @ 2019</p>
+  </div>
+</footer>
+</html>

@@ -1,0 +1,177 @@
+/* .salary_averages {
+  text-align: center;
+  font-size: 60px;
+} */
+img.rounded-corners {
+  border-radius: 30px;
+}
+
+.div_predicted {
+  border-style: solid;
+  border-color:  #041E42;
+  background-color: #041E42 ;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 60px;
+}
+
+.image_by_default {
+  width:"1080px"; 
+  height:"450px";
+}
+
+/* .player_pic {
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+/* #player_pic {
+  max-width: 100%;
+  max-height: 100%;
+} */
+
+
+/* img {
+  width:"75%";
+  height:"100%";
+
+} */
+/* .picture_size {
+  height: 75px;
+  width: 75px;
+} */
+/* .container {
+  height: auto;
+  border-radius: 10px;
+  padding: 20px;
+} */
+
+/* .table_stats {
+  margin-right: 25px;
+  padding-right: 25px;
+} */
+
+/* .mlb_player {
+  height: 550px;
+  background: #041E42;
+  border-radius:25px;
+  margin-top: 25px;
+  padding: 25px,25px;  
+} */
+
+.mlb_analytics {
+  Height: 400px;
+  /* background: #041E42; 
+  border-radius:25px;
+  padding: 25px,25px;   */
+}
+
+.navbar {
+  background-color: #041E42;
+  color: white;
+  height: 56px;
+  padding: 0 32px;
+  width: 100%;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-variant: normal;
+  font-size: 18px;
+  } 
+
+.footer {
+  position: fixed;
+  font-size: 18px;
+  padding-top: 15px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #041E42;
+  color: white;
+  text-align: center;
+}
+
+.nav-link {
+-webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15px;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+  opacity: 0.8;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.title_header {
+  text-align: center;
+  background-color: #ECECEC;
+  color: black;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin:0px,100px,0px,50px;  
+}
+.color_page_background {
+  background-color:#ECECEC;
+}
+
+.see-also {
+  color: #222;
+  margin: 20px 50px 0px;
+  font: 700 14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* .btn-primary {
+  color: white;
+  background-color: #BF0D3E;
+  border: #BF0D3E;
+  position: relative;
+  
+} */
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Filter Statistics */
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}

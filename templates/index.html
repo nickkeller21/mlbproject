@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="../static/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../static/asset/images/favicon.ico" type="image/x-icon">
+    <title>MLB | Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body style="margin-bottom:100px">
+
+    <!-- Header nav bar -->
+    <nav class="navbar navbar-expand-lg">
+      <a href="/"><img src="../static/assets/images/mlb_logo_svg.svg"
+          alt="mlb_logo" style="width:71.19px;height:40px"></a>
+      <button class="navbar-toggler header_nav" type="button"
+        data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon header_nav"></span>
+      </button>
+      <div class="navbar collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/statistics">STATISTICS</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/salary">SALARY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/batter">BATTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pitcher">PITCHER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mlabout">ML ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">...</a>
+          </li>
+        </ul>
+        <div>
+          <a href="https://github.com/nickkeller21/MLB_WAR_viz" target="_blank"><img
+              src="../static/assets/images/guthub_white.png" alt="Git-Hub"
+              style="width:90.19px;height:40px"></a>
+        </div>
+      </div>
+    </nav>
+
+ <!-- Title Nav  -->
+    <div class="title_header">
+      <h1>MLB Raw Data Analytics</h1>
+      <h6>
+        Our projection system identifies similar players throughout MLB history
+        and uses them to develop a probabilistic<br/>
+          forecast of what a current MLB player’s future might look like.</h6>
+        <p class="see-also"><b> More MLB:</b><a href="#"> Our 2019-20 MLB
+            predictions - </a><a href="#">Every team’s Elo history.</a></p>
+        <p id="date"></p>
+      </div>
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+          <div class="col-sm-12" style="border-color: black">
+            <h2 text-align="center">Stats Viewer</h2>
+            <h6>From the following dropdown select a player of your choice.</h6>
+          </br>
+          <div>
+            <div>
+              <select id="myInput" onchange="optionChanged(this.value)" Style="border-radius: 10px"
+                ></select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:30px">
+      <div class="row">
+        <div class="col-sm-3" id ="Player_desc">
+          <h2 id ="player_name">Player</h2>
+          <div id="img">
+            <img src="" width="225" height="300" id="player_pic">
+          </div>
+          <br>
+          <div id = "bio">
+            <h5>Bio</h5>
+            <p id="player_bio">This is where the bio will be!!</p>
+          </div>
+        </div>
+        <div class="col-sm-9" id="war">
+          <h2>Wins Above Replacement</h2>
+          <h6>Wins Above Replacement (WAR) is an attempt by the
+            sabermetric baseball community to summarize a player’s total
+            contributions to their team in one statistic.</h6>
+          <div class="mlb_analytics" id="player_war">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+          <div class="col-sm"><div id="table_1"></div></div>
+          <div class="col-sm"><div id="table_2"></div></div>
+      </div>
+      <div class="row">
+          <div class="col-sm"><div id="table_3"></div></div>
+          <div class="col-sm"><div id="table_4"></div></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app2.js') }}"></script>
+    <script type="text/javascript" src="../static/js/app2.js"></script>
+  </body>
+  <footer>
+    <div class="footer" style="margin-top:160px">
+      <p>Made with ❤ by 4 Astros' Fans @ 2019</p>
+    </div>
+  </footer>
+</html>
