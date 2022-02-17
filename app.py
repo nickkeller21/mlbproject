@@ -17,7 +17,9 @@ FLASK_DEBUG=1
 #################################################
 
 client = MongoClient('mongodb://nick21:Nick21**@ds335678.mlab.com:35678/heroku_s4gpc8qj')
-db = client.heroku_s4gpc8qj
+client = pymongo.MongoClient("mongodb+srv://nickkeller21:<password>@baseball.iroer.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = client.test
+# db = client.heroku_s4gpc8qj
 collection = db.baseball
 
 @app.route("/")
