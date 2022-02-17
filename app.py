@@ -16,8 +16,8 @@ FLASK_DEBUG=1
 # Database Setup
 #################################################
 
-client = MongoClient('mongodb://nick21:Nick21**@ds335678.mlab.com:35678/heroku_s4gpc8qj')
-client = pymongo.MongoClient("mongodb+srv://nickkeller21:<password>@baseball.iroer.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+# client = MongoClient('mongodb://nick21:Nick21**@ds335678.mlab.com:35678/heroku_s4gpc8qj')
+client = MongoClient("mongodb+srv://nickkeller21:<password>@baseball.iroer.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.baseball
 # db = client.heroku_s4gpc8qj
 collection = db.baseball
