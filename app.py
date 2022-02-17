@@ -17,9 +17,11 @@ FLASK_DEBUG=1
 #################################################
 
 # client = MongoClient('mongodb://nick21:Nick21**@ds335678.mlab.com:35678/heroku_s4gpc8qj')
-client = MongoClient("mongodb+srv://nickkeller21:<password>@baseball.iroer.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-db = client.baseball
+# db = client.baseball
 # db = client.heroku_s4gpc8qj
+
+client = MongoClient("mongodb+srv://nickkeller21:082z!JOzkH59@baseball.iroer.mongodb.net/baseball?retryWrites=true&w=majority")
+db = client.test
 collection = db.baseball
 
 @app.route("/")
