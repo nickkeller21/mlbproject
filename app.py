@@ -15,14 +15,10 @@ FLASK_DEBUG=1
 #################################################
 # Database Setup
 #################################################
+client = MongoClient("mongodb+srv://nkeller:3sWES15V4FUKBk1f@cluster0.cy1z5.mongodb.net/test?retryWrites=true&w=majority")
+db = client["test"]
+collection = db["test"]
 
-# client = MongoClient('mongodb://nick21:Nick21**@ds335678.mlab.com:35678/heroku_s4gpc8qj')
-# db = client.baseball
-# db = client.heroku_s4gpc8qj
-
-client = MongoClient("mongodb+srv://nickkeller21:082z!JOzkH59@baseball.iroer.mongodb.net/baseball?retryWrites=true&w=majority")
-db = client.test
-collection = db.baseball
 
 @app.route("/")
 def index():
